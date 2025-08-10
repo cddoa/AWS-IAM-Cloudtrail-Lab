@@ -5,9 +5,10 @@
 The purpose of this lab is to create an AWS cloud security architecture that enforces least privilege access, monitors account activity, and alerts on suspicious logins. The lab leverages IAM, CloudTrail, CloudWatch and two isolated EC2 instances to simulate a secure and monitored enterprise environment. The setup was tested  by simulating failed logins, validating IAM policy enforcement using the IAM Policy Simulator, and confirming CloudWatch alarm triggers via email notifications.
   
 ## Skills and Tools Demonstrated
-* **AWS Identity and Access Management (IAM):** User groups, policies for principle of least privilege, tag-based resource access control, MFA enforcement policies
-* **AWS CloudTrail:** Logging management events, integration with CloudWatch for real-time monitoring
+* **AWS Identity and Access Management (IAM):** User groups, policies for principle of least privilege, tag-based resource access control, MFA enforcement policies.
+* **AWS CloudTrail:** Logging management events, integration with CloudWatch for real-time monitoring.
 * **AWS CloudWatch:** Creation of metric filters and alarm setup.
+* **Security Best Practices:** Principle of least privilege, MFA enforcement, real-time monitoring and alerts.
 
 # EC2 instances
 
@@ -43,11 +44,13 @@ Policy Simulator used to ensure policies are working.
   
 Policy created to force users to set up multi-factor authentication. The policy denies the user access to all AWS resources except the ones needed to set up MFA if they do not have MFA set up.
 
-# CloudTrail and CloudWatch
+# Event logging with CloudTrail
   
 ![Cloudtrail](https://github.com/user-attachments/assets/ea90a6a5-5a99-461b-a8a0-101e5b44645e)
   
 New CloudTrail trail to log management events like logins. The trail is configured to send logs to a CloudWatch log group.
+  
+# Metric Filter and Alarm Setup with CloudWatch  
   
 <img width="1368" height="674" alt="image" src="https://github.com/user-attachments/assets/f72e262f-99f2-4ff2-a140-da4fb83d56d2" />
   
@@ -56,6 +59,8 @@ Metric filter created for the CloudWatch log group to detect failed logins.
 <img width="1113" height="468" alt="image" src="https://github.com/user-attachments/assets/5d73115b-6060-412f-aab7-02dd7dc5aa9d" />
   
 Suspicious login activity alarm created for the metric filter, threshold set to 3 or more failed login attempts.
+  
+## Testing the Alarm
   
 ![Alarm test](https://github.com/user-attachments/assets/27807dba-f08d-415c-8e5e-f6c3d2dee8b6)
   
