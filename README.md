@@ -5,9 +5,10 @@
 The purpose of this lab is to create an AWS cloud security architecture that enforces least privilege access, monitors account activity, and alerts on suspicious logins. The lab leverages IAM, CloudTrail, CloudWatch and two isolated EC2 instances to simulate a secure and monitored enterprise environment. The setup was tested  by simulating failed logins, validating IAM policy enforcement using the IAM Policy Simulator, and confirming CloudWatch alarm triggers via email notifications.
   
 ## Skills and Tools Demonstrated
-* **AWS Identity and Access Management (IAM):** User groups, policies for principle of least privilege, tag-based resource access control, MFA enforcement policies.
-* **AWS CloudTrail:** Logging management events, integration with CloudWatch for real-time monitoring.
-* **AWS CloudWatch:** Creation of metric filters and alarm setup.
+* **AWS Identity and Access Management (IAM):** Created user groups, policies using the principle of least privilege, tag-based resource access control, MFA enforcement policies.
+* **AWS CloudTrail:** Logging management events, integration with CloudWatch for real-time alerting.
+* **AWS CloudWatch:** Created metric filters and alarms for automated alerting. 
+* **AWS GuardDuty** Deployed and managed continuous threat detection to identify malicious activity and potentially security risks.
 * **Security Best Practices:** Principle of least privilege, MFA enforcement, real-time monitoring and alerts.
 
 # EC2 instances
@@ -70,4 +71,31 @@ Suspicious login activity alarm created for the metric filter, threshold set to 
 Purposely failed to log in more than three times to ensure the alarm works.
   
   
+#
+  
+# Threat Detection with GuardDuty
+  
+![guardduty](https://github.com/user-attachments/assets/0eda5f29-01dd-4293-ac66-e789c6037167)
+  
+Enabled AWS GuardDuty for continous threat detection and monitoring.
+  
+<img width="1352" height="552" alt="image" src="https://github.com/user-attachments/assets/07ec93a2-2fee-45b8-b1cc-9a7cbd28b43b" />
+  
+Data sources for GuardDuty include CloudTrail, DNS and VPC flow logs.
+
+## Testing threat detection
+  
+![nmap](https://github.com/user-attachments/assets/7f7be3fb-f88b-4618-9894-d4a354cdfbca)
+  
+Performing an NMAP portscan from one EC2 instance to another.
+  
+
+![nmapdetected](https://github.com/user-attachments/assets/acae072b-b444-4e5e-84b3-788b5ace531e)
+  
+Outbound NMAP scan from the EC2 instance is detected and flagged with medium severity.
+  
+![sampleFindings](https://github.com/user-attachments/assets/d73719e8-b273-45a6-98c6-cc09d096d850)
+  
+Findings can also be generated with GuardDuty's generate sample findings feature.
+
 #
