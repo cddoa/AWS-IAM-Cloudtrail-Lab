@@ -9,6 +9,7 @@ The purpose of this lab is to create an AWS cloud security architecture that enf
 * **AWS CloudTrail:** Logging management events, integration with CloudWatch for real-time alerting.
 * **AWS CloudWatch:** Created metric filters and alarms for automated alerting. 
 * **AWS GuardDuty** Deployed and managed continuous threat detection to identify malicious activity and potentially security risks.
+* **AWS Lambda** Implemented a Python function to automate security tasks.
 * **Security Best Practices:** Principle of least privilege, MFA enforcement, real-time monitoring and alerts.
 
 # EC2 instances
@@ -88,6 +89,7 @@ Data sources for GuardDuty include CloudTrail, DNS and VPC flow logs.
 ![nmap](https://github.com/user-attachments/assets/7f7be3fb-f88b-4618-9894-d4a354cdfbca)
   
 Performing an NMAP portscan from one EC2 instance to another.
+![lambdaTest](https://github.com/user-attachments/assets/75da32ef-bec7-4528-b45e-6bf8de1a8983)
   
 
 ![nmapdetected](https://github.com/user-attachments/assets/acae072b-b444-4e5e-84b3-788b5ace531e)
@@ -98,4 +100,12 @@ Outbound NMAP scan from the EC2 instance is detected and flagged with medium sev
   
 Findings can also be generated with GuardDuty's generate sample findings feature.
 
-#
+## Automation with Lambda
+  
+![lambdaFunction](https://github.com/user-attachments/assets/04b348d0-962f-442f-a08d-a7152ef0d664)
+  
+After ensuring that GuardDuty is working I wrote a Lambda function that will move the instance to an isolated security group when an event with a severity level >= medium is detected. The security group has no inbound or outbound rules, completely isolated.
+  
+![lambdaTest](https://github.com/user-attachments/assets/fc7bf656-5ec1-4391-8cf2-4c974450c6e9)
+  
+Testing the Lambda function. EC2 instance was successfully moved to the isolated security group upon detection.
