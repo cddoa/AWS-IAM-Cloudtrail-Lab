@@ -106,6 +106,14 @@ Findings can also be generated with GuardDuty's generate sample findings feature
   
 After ensuring that GuardDuty is working I wrote a Lambda function that will move the instance to an isolated security group when an event with a severity level >= medium is detected. The security group has no inbound or outbound rules, completely isolated.
   
+<img width="1038" height="326" alt="image" src="https://github.com/user-attachments/assets/c10c4c58-6583-4531-84e5-0322b1f5cb3f" />
+  
+The Lambda function is triggered through an EventBridge rule.
+  
+<img width="1490" height="302" alt="image" src="https://github.com/user-attachments/assets/d0baaa1f-99d0-47b4-acf8-05b1d03a1ade" />
+  
+The pattern for the EventBridge rule is set to match GuardDuty events that involve EC2 instances.
+  
 ![lambdaTest](https://github.com/user-attachments/assets/fc7bf656-5ec1-4391-8cf2-4c974450c6e9)
   
 Testing the Lambda function. EC2 instance was successfully moved to the isolated security group upon detection.
