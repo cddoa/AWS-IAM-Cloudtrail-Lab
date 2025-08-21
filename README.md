@@ -8,8 +8,8 @@ The purpose of this lab is to create an AWS cloud security architecture that enf
 * **AWS Identity and Access Management (IAM):** Created user groups, policies using the principle of least privilege, tag-based resource access control, MFA enforcement policies.
 * **AWS CloudTrail:** Logging management events, integration with CloudWatch for real-time alerting.
 * **AWS CloudWatch:** Created metric filters and alarms for automated alerting. 
-* **AWS GuardDuty** Deployed and managed continuous threat detection to identify malicious activity and potentially security risks.
-* **AWS Lambda** Implemented a Python function to automate security tasks.
+* **AWS GuardDuty:** Deployed and managed continuous threat detection to identify malicious activity and potentially security risks.
+* **AWS Lambda:** Automated security tasks using Lambda.
 * **Security Best Practices:** Principle of least privilege, MFA enforcement, real-time monitoring and alerts.
 
 # EC2 instances
