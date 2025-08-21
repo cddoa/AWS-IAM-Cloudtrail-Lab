@@ -88,13 +88,13 @@ Data sources for GuardDuty include CloudTrail, DNS and VPC flow logs.
   
 ![nmap](https://github.com/user-attachments/assets/7f7be3fb-f88b-4618-9894-d4a354cdfbca)
   
-Performing an NMAP portscan from one EC2 instance to another.
+Performing an Nmap portscan from one EC2 instance to another.
 ![lambdaTest](https://github.com/user-attachments/assets/75da32ef-bec7-4528-b45e-6bf8de1a8983)
   
 
 ![nmapdetected](https://github.com/user-attachments/assets/acae072b-b444-4e5e-84b3-788b5ace531e)
   
-Outbound NMAP scan from the EC2 instance is detected and flagged with medium severity.
+Outbound Nmap scan from the EC2 instance is detected and flagged with medium severity.
   
 ![sampleFindings](https://github.com/user-attachments/assets/d73719e8-b273-45a6-98c6-cc09d096d850)
   
