@@ -28,13 +28,20 @@ Risk analysis conducted using a 5x5 risk matrix
 * Impact: 1-5
 * Risk score: Likelihood x Impact
 
-|Asset|Threat|Likelihood|Impact|Risk Score|Justification|
-|-|-|-|-|-|-|
-|S3 CloudTrail logs | Data breach via misclassification|4|4| 16 | S3 buckets do not have classification tags, could be exposed through overpermissive bucket policies|
-|EC2 Instances| Unauthorized privilege escalation, lateral movement | 3 | 4 | 12 |Lack of specific security tags, production and development instances lack network segmentation creating lateral movement risk, mitigated by IAM policy|
-|IAM User Accounts| Insider threat and account hijacking | 3 | 4 |12 | No user deprovisioning process, terminated users can retain access|
-|IAM groups and policies|Identity management failures|2|4|8|No automated user lifecycle management, risk of manual misconfigurations|
-|CloudWatch alerts|Insufficient threat detection |2|4|8|Only basic failed login alarms configured|
-|GuardDuty Findings|Insuficient threat detection and assessment|2|3|6|Potential for false negatives and no formal process for traiging findings|
-|AWS Infrastructure|Physical security breach|1|3|3|Physical data center security managed by AWS, relies on AWS phyiscal security standards|
-|Lambda Functions|Function compromise|1|2|2|Minimal attack surface| 
+|Asset|Threat|Control Gap|Likelihood|Impact|Risk Score|Justification|
+|-|-|-|-|-|-|-|
+|S3 CloudTrail logs | Data breach via misclassification|No systemic classification - 5.12|4|4| 16 | S3 buckets do not have classification tags, could be exposed through overpermissive bucket policies|
+|EC2 Instances| Unauthorized privilege escalation, lateral movement |Asset inventory not complete - 5.9| 3 | 4 | 12 |Lack of specific security tags, production and development instances lack network segmentation creating lateral movement risk, mitigated by IAM policy|
+|IAM User Accounts| Insider threat and account hijacking |User access rights lifecyle not complete - 5.18| 3 | 4 |12 | No user deprovisioning process, terminated users can retain access|
+|IAM groups and policies|Identity management failures|Manual user lifecycle - 5.16|2|4|8|No automated user lifecycle management, risk of manual misconfigurations|
+|CloudWatch alerts|Insufficient threat detection |Limited monitoring - 8.16|2|4|8|Only basic failed login alarms configured|
+|GuardDuty Findings|Insuficient threat detection and assessment|No process for event assessment - 5.25|2|3|6|Potential for false negatives and no formal process for traiging findings|
+|AWS Infrastructure|Physical security breach|No control over AWS physical security - 7.2|1|3|3|Physical data center security managed by AWS, relies on AWS phyiscal security standards|
+|Lambda Functions|Function compromise|No formal code review - 8.29|1|2|2|No formal code review but minimal attack surface| 
+
+## Risk Treatment Recommendations
+- S3 data classification: Integrate automated S3 bucket tagging
+- Complete asset inventory: AWS config rules for mandatory EC2 and S3 resource tagging
+- Identity management: Integrate automated user provisioning
+- Access lifecycle: Establish a schedule of access reviews with documented procedures
+- Security monitoring: Integrate Security Hub for a centralized security dashboard and automation
